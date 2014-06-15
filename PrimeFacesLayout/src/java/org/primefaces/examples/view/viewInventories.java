@@ -71,7 +71,7 @@ public class viewInventories {
             DBObject dBObject = dCursor.next();
 
             if (!ob.get("_id").toString().equals("")) {
-                if (ob.get("_id").toString().equals(dBObject.get("itemCode").toString())) {
+                if (ob.get("_id").toString().equals(dBObject.get("imCode").toString())) {
                     Inventory inventory = new Inventory();
                     inventory.setItemCode(ob.get("_id").toString());
                     inventory.setItemName(ob.get("itemName").toString());
