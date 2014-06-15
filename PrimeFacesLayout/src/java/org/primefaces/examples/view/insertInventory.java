@@ -99,12 +99,12 @@ public class insertInventory {
             //inserting items to Java Database Object
             dBObject.put("itemName", itemName);
             dBObject.put("manufacturerName", producerName);
-            dBObject.put("itemCode", barcode);
+            dBObject.put("_id", barcode);
             dBCollection.insert(dBObject);
             DBCollection dBCollection1 = db.getCollection("ItemDetails");
             DBObject dBObject1 = new BasicDBObject();
-            dBObject1.put("itemDetailCode", itemDetailCode);
-            dBObject1.put("itemCode", barcode);
+            dBObject1.put("_id", itemDetailCode);
+            dBObject1.put("itemCode",barcode);
             dBObject1.put("Quantity", qty);
             dBCollection1.insert(dBObject1);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "SUCCESS:", "Added Item Successful"));
