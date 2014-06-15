@@ -27,7 +27,7 @@ public class Inventory {
     private String producerName;
     private String itemCode;
     private String itemDetailCode;
-    private int qty;
+    private String qty;
     
     
     
@@ -39,11 +39,11 @@ public class Inventory {
         this.itemDetailCode = itemDetailCode;
     }
 
-    public int getQty() {
+    public String getQty() {
         return qty;
     }
 
-    public void setQty(int qty) {
+    public void setQty(String qty) {
         this.qty = qty;
     }
 

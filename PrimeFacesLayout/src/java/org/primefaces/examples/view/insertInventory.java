@@ -33,7 +33,7 @@ public class insertInventory {
     private String barcode;
     private String itemCode;
     private String itemDetailCode;
-    private int qty;
+    private String qty;
 
     public String getItemCode() {
         return itemCode;
@@ -51,11 +51,11 @@ public class insertInventory {
         this.itemDetailCode = itemDetailCode;
     }
 
-    public int getQty() {
+    public String getQty() {
         return qty;
     }
 
-    public void setQty(int qty) {
+    public void setQty(String qty) {
         this.qty = qty;
     }
 
@@ -88,7 +88,7 @@ public class insertInventory {
         this.producerName = null;
         this.barcode = null;
         this.itemDetailCode = null;
-        this.qty = 0;
+        this.qty = null;
     }
 
     public void insertItemData() throws UnknownHostException {
@@ -111,14 +111,6 @@ public class insertInventory {
             resetData();
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR:", "Submition Failed"));
-        }
-    }
-
-    public void insertItemDetailData() throws UnknownHostException {
-        DB db = (new MongoClient("localhost", 27017)).getDB("shopData");
-        if (!itemDetailCode.equals("") && qty != 0 && !itemCode.equals("")) {
-
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "SUCCESS:", "Added Item Details Successful"));
         }
     }
 }

@@ -62,18 +62,24 @@ public class viewInventories {
     public List<Inventory> getInventoryList() throws UnknownHostException {
         DB db = (new MongoClient("localhost", 27017).getDB("shopData"));
         DBCollection dBCollection = db.getCollection("Item");
-        DBCollection dbc=db.getCollection("ItemDetails");
+        DBCollection dbc = db.getCollection("ItemDetails");
         DBCursor dBCursor = dBCollection.find();
-        while (dBCursor.hasNext()) {
+        DBCursor dCursor = dbc.find();
+        while (dBCursor.hasNext() && dCursor.hasNext()) {
 
             DBObject ob = dBCursor.next();
-            
-            if (!ob.get("itemCode").toString().equals("")) {
-                Inventory inventory = new Inventory();
-                inventory.setItemCode(ob.get("itemCode").toString());
-                inventory.setItemName(ob.get("itemName").toString());
-                inventory.setProducerName(ob.get("manufacturerName").toString());
-                inventoryList.add(inventory);
+            DBObject dBObject = dCursor.next();
+
+            if (!ob.get("_id").toString().equals("")) {
+                if (ob.get("_id").toString().equals(dBObject.get("itemCode").toString())) {
+                    Inventory inventory = new Inventory();
+                    inventory.setItemCode(ob.get("_id").toString());
+                    inventory.setItemName(ob.get("itemName").toString());
+                    inventory.setProducerName(ob.get("manufacturerName").toString());
+                    inventory.setQty(dBObject.get("Quantity").toString());
+                    inventoryList.add(inventory);
+                }
+
             }
 
         }
