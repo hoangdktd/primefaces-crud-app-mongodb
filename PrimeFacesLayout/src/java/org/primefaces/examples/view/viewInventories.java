@@ -59,9 +59,6 @@ public class viewInventories {
         this.inventories = inventories;
     }
 
-//    public void getDatatoTable() throws UnknownHostException {
-//       
-//    }
     public List<Inventory> getInventoryList() throws UnknownHostException {
         DB db = (new MongoClient("localhost", 27017).getDB("shopData"));
         DBCollection dBCollection = db.getCollection("Item");
