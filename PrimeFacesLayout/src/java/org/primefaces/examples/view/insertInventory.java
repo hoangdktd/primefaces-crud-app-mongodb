@@ -87,6 +87,8 @@ public class insertInventory {
         this.itemName = null;
         this.producerName = null;
         this.barcode = null;
+        this.itemDetailCode = null;
+        this.qty = 0;
     }
 
     public void insertItemData() throws UnknownHostException {
@@ -118,11 +120,5 @@ public class insertInventory {
 
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "SUCCESS:", "Added Item Details Successful"));
         }
-    }
-
-    public void resetDetails() {
-        this.itemCode = null;
-        this.itemDetailCode = null;
-        this.qty = 0;
     }
 }
