@@ -1,0 +1,1 @@
+I have created app with simple GUI which has been created using Primefaces JSF Technology and Mongo DB newest No SQL DB Application. In this application you can get a basic knowledge about how to handle crud operations in mongo db through a web application.
